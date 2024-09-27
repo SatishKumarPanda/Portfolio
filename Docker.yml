@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: stop container
+      shell:  docker container stop web-container                    #name of container 
+    - name: remove container
+      shell: docker container rm web-container
+    - name: remove docker image
+      shell: docker image rm satishkumarpanda/Photosec_website                            #name of images (docker images)
+    - name: create new container
+      shell: docker container run -itd --name web-container -p 9000:80 satishkumarpanda/Photosec_website     #(docker-job>> name of jenkins job)
